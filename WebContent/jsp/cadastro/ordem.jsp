@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Página de cadastro de Ordem de Serviço</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://www.abegas.org.br/Site/wp-content/uploads/2012/03/h_lg_algas.jpg"/>
 </head>
 <style>
 header{

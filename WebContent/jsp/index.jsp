@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sistema de Ordem de Serviço</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://scontent.cdninstagram.com/t51.2885-19/s150x150/14723099_1723586417964495_3127319396507189248_a.jpg"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../js/jquery.blockUI.js"></script>
 

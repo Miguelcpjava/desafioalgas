@@ -1,5 +1,106 @@
 package ordem.negocio;
 
-public class OrdemServicoDAO {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.NoResultException;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+
+import ordem.model.OrdemServico;
+import ordem.util.HibernateUtil;
+
+public class OrdemServicoDAO implements Serializable{
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1370892682030657762L;
+
+	protected void salvar(OrdemServico ordemServico){
+		
+		        Session sessao = HibernateUtil.getSessionFactory().openSession();
+		        try {
+		            sessao.getTransaction().begin();
+		            sessao.save(ordemServico);
+		            sessao.getTransaction().commit();
+		        }catch(Exception e){
+		        	e.printStackTrace();
+		            sessao.getTransaction().rollback();
+		        } 
+		        finally {
+		            sessao.flush();
+		            sessao.close();
+		        }
+		    }
+	protected void atualizar(OrdemServico ordemServico) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		try{
+			sessao.getTransaction().begin();
+			sessao.update(ordemServico);
+			sessao.flush();
+			sessao.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			sessao.getTransaction().rollback();
+		}finally{
+			sessao.close();
+		}
+	}
+	
+	protected void remover(OrdemServico ordemServico) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		try{
+			sessao.getTransaction().begin();
+			sessao.delete(ordemServico);
+			sessao.getTransaction().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			sessao.getTransaction().rollback();
+		}finally{
+			sessao.close();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected List<OrdemServico> getOrdemServicos(){
+		List<OrdemServico> OrdemServicos = null;
+		 Session sessao = HibernateUtil.getSessionFactory().openSession();
+		try{
+			Criteria crt = sessao.createCriteria(OrdemServico.class);
+			crt.addOrder(Order.asc("dataOS"));
+			OrdemServicos = new ArrayList<OrdemServico>();
+			OrdemServicos = crt.list();
+		}catch(NoResultException ne){
+			ne.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			sessao.close();
+		}
+		return OrdemServicos;
+	}
+	
+	protected OrdemServico getOrdemServicoByID(Long id) {
+		System.out.println("========Pesquisando==========");
+		OrdemServico OrdemServico = new OrdemServico();
+		 Session sessao = HibernateUtil.getSessionFactory().openSession();
+		 try{
+			 Criteria crt = sessao.createCriteria(OrdemServico.class);
+				crt.add(Restrictions.eq("idOS",id));
+				System.out.println("=======Carregando OrdemServico====");
+				OrdemServico = (OrdemServico) crt.uniqueResult();
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }finally{
+			 sessao.close();
+			 System.out.println(">>>>>>>Sessão Fechada com sucesso");
+		 }
+		 return OrdemServico;
+	}
 }
