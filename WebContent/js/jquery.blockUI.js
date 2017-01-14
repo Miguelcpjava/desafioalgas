@@ -249,6 +249,7 @@
 
 		function install(el, opts) {
 			var css, themedCSS;
+			console.log("Instalando!");
 			var full = (el == window);
 			var msg = (opts && opts.message !== undefined ? opts.message : undefined);
 			opts = $.extend({}, $.blockUI.defaults, opts || {});
@@ -455,6 +456,7 @@
 
 		// remove the block
 		function remove(el, opts) {
+			console.log("removendo");
 			var count;
 			var full = (el == window);
 			var $el = $(el);

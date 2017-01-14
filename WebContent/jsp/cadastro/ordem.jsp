@@ -6,7 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style>
+header{
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	padding-top: 10px;
+	height: 100%;
+	text-decoration: blink;
+}
+</style>
 <body>
+<header>
 <h1>Cadastro de Ordem de Serviço</h1>
+
+</header>
+
+
 </body>
 </html>

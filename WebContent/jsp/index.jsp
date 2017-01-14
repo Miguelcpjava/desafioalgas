@@ -46,27 +46,32 @@
 	height: 70px;
 	border-radius: 8px;
 }
+.test{
+	text-decoration: none;
+}
 </style>
 <script>
 $(document).ready(function() { 
-	var url = '../cadastro/ordem.jsp';
+	var url = '';
     $('.acesso').click(function() { 
     	$this = $(this);
         $.blockUI({ 
         	
-            message: '<h1><img src="../image/loadingpaper.gif"/> Carregando...</h1>', 
+            message: '<h1><img src="../image/loadingpaper.gif"/> Carregando</h1>', 
             timeout:  4000,
-			fadeIn: 200
-		
+			fadeIn: 200,
+			onUnblock: function() { 
+                window.location.href = 'http://localhost:8082/desafio/jsp/cadastro/ordem.jsp'; 
+            } 
        
         }); 
        
     }); 
-    
 }); 
 </script>
 </head>
 <body>
+
 	<div id="coluna1">
 		<h1 style="color: white;">Primeira</h1>
 	</div>
@@ -76,11 +81,13 @@ $(document).ready(function() {
 		<h2>Sistema de Cadastro</h2>
 		<h2>de Ordem de Serviço</h2>
 		
-		<button type="button" class="acesso">Acessar</button>
+		<button class="acesso">Acessar</button>
+		
 		<br/><br/><br/><br/>
 	</div>
 	<div id="coluna3">
 		
 	</div>
+	
 </body>
 </html>
