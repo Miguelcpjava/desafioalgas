@@ -107,11 +107,18 @@ public class OrdemServicoDAO implements Serializable{
 	
 	public OrdemServico getOrdemServicoByCodeOS(String codeOS){
 		OrdemServico OrdemServico =null;
+		//Abro a sessão com o banco de dados
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		try{
-			Criteria cr = sessao.createCriteria(OrdemServico.class);
+			//Crio o objeto Criteria
+			Criteria cr = 
+					// Nesta linha faço SELECT * FROM ORDEMSERVICO
+					sessao.createCriteria(OrdemServico.class);
+			//Nesta Linha adiciono a condição igual (WHERE CODEOS = ?)
 			cr.add(Restrictions.eq("codeOS", codeOS));
+			//Instancio a classe ordem de serviço
 			OrdemServico = new OrdemServico();
+			//Capturo o resultado que vem da consulta, se houver!
 			OrdemServico = (OrdemServico) cr.uniqueResult();
 		}catch(Exception e){
 			e.printStackTrace();
