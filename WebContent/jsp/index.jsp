@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +63,7 @@ $(document).ready(function() {
     	$this = $(this);
         $.blockUI({ 
         	
-            message: '<h1><img src="../image/loadingpaper.gif"/> Carregando</h1>', 
+            message: '<h1><img src="image/loadingpaper.gif"/> Carregando</h1>', 
             timeout:  4000,
 			fadeIn: 200,
 			onUnblock: function() { 
@@ -78,11 +83,12 @@ $(document).ready(function() {
 	</div>
 	<div id="coluna2" class="tela" >
 	<br/>
-		<img src="../image/advertencia.png" />
+		<img src="image/advertencia.png" />
 		<h2>Sistema de Cadastro</h2>
 		<h2>de Ordem de Serviço</h2>
 		
-		<button class="acesso">Acessar</button>
+		<html:submit styleClass="acesso" value="Acessar"></html:submit>
+		
 		
 		<br/><br/><br/><br/>
 	</div>

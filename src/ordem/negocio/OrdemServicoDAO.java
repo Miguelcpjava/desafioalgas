@@ -22,7 +22,7 @@ public class OrdemServicoDAO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1370892682030657762L;
 
-	protected void salvar(OrdemServico ordemServico){
+	public Long salvar(OrdemServico ordemServico){
 		
 		        Session sessao = HibernateUtil.getSessionFactory().openSession();
 		        try {
@@ -37,6 +37,7 @@ public class OrdemServicoDAO implements Serializable{
 		            sessao.flush();
 		            sessao.close();
 		        }
+		        return ordemServico.getIdOS();
 		    }
 	protected void atualizar(OrdemServico ordemServico) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();

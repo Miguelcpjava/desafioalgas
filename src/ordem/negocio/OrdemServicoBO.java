@@ -1,6 +1,11 @@
 package ordem.negocio;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import ordem.model.OrdemServico;
 
@@ -37,4 +42,14 @@ public class OrdemServicoBO implements Serializable {
 		}
 	}
 	
+	public boolean dataMaiorOuIgualQueAtual(Date data) throws ParseException{
+		Date dataAtual = Calendar.getInstance().getTime();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		dataAtual = (Date) formatter.parse(String.valueOf(dataAtual));
+		if(data.compareTo(dataAtual) >= 0 ){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
