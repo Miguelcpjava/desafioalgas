@@ -104,4 +104,20 @@ public class OrdemServicoDAO implements Serializable{
 		 }
 		 return OrdemServico;
 	}
+	
+	public OrdemServico getOrdemServicoByCodeOS(String codeOS){
+		OrdemServico OrdemServico =null;
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		try{
+			Criteria cr = sessao.createCriteria(OrdemServico.class);
+			cr.add(Restrictions.eq("codeOS", codeOS));
+			OrdemServico = new OrdemServico();
+			OrdemServico = (OrdemServico) cr.uniqueResult();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			sessao.close();
+		}
+		return OrdemServico;
+	}
 }

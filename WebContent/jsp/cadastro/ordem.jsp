@@ -35,7 +35,9 @@ header{
 <header>
 <h1>Cadastro de Ordem de Serviço</h1>
 </header>
-<label><strong><c:if test="${not empty msg ? msg : ''}"/></strong></label>
+ <c:if test="${msg != ''} ">
+<label><strong style="color: red;">${msg}</strong></label>
+</c:if>
 <html:form action="/index.do?acao=Sair">
 <html:text styleId="datepicker" property="dataformatada"/>
 <html:submit value="Sair"></html:submit>

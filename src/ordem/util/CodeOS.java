@@ -24,10 +24,11 @@ public class CodeOS {
 			}
 			if (i % 2 == 0) {
 				number = ra.nextInt(9);
-				System.out.println("Par: " + number);
+				
 				while (number < 0 || number > 26) {
 					number = ra.nextInt(9);
 				}
+				System.out.println("Par: " + number);
 				letra = String.valueOf(number);
 
 				colecao.add(letra);
@@ -38,7 +39,9 @@ public class CodeOS {
 				while (number < 0 || number > 26) {
 					number = ra.nextInt(26);
 				}
+				
 				letra = String.valueOf(ln.number4Letter(number));
+				System.out.println("Ímpar: "+number+" = "+letra);
 				colecao.add(letra);
 			}
 		}

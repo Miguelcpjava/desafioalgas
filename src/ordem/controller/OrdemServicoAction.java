@@ -27,6 +27,7 @@ public class OrdemServicoAction extends DispatchAction {
 	public final String SUCESSO = "sucesso";
 	public final String SEMSUCESSO = "failure";
 	public final String IMPRIMIR = "imprimir";
+	public final String BUSCAR = "buscar";
 	
 	
 	public ActionForward Sair(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
@@ -70,5 +71,32 @@ public class OrdemServicoAction extends DispatchAction {
 		request.setAttribute("Ordem", ordem);
 		//3º Redireciona para impressão
 		return mapping.findForward(IMPRIMIR);
+	}
+	/*
+	 * Método para realizar busca do OS pela váriavel CodeOS
+	 */
+	public ActionForward BuscarOS(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		//Capturo o que foi digitado pelo usuário
+		OrdemServico ordem = (OrdemServico) form;
+		//Crio o objeto de Ordem de Servico
+		OrdemServico result = null;
+		//Crio a instancia do DAO
+		OrdemServicoDAO dao = new OrdemServicoDAO();
+		try{
+			//Instancio a variavel result
+			result = new OrdemServico();
+			//Busco no banco a ordem pelo CodeOS
+			result = dao.getOrdemServicoByCodeOS(ordem.getCodeOS());
+		}catch (Exception e){
+			e.printStackTrace();
+			//Se houver erro libero a mémoria
+			result = null;
+		}
+		//Se caso não for nulo que envio para view
+		if (result != null){
+			request.setAttribute("resultado", result);
+		}
+		return mapping.findForward(BUSCAR);
 	}
 }

@@ -19,6 +19,8 @@
 <!-- Cadastro da Ordem -->
 	<action name="OrdemServico" path="/cadastrarOrdem" parameter="acao">
 		<forward name="imprimir" path="/impressao/printordem.jsp"></forward>
+		<forward name="semsucesso" path="/cadastro/ordem.jsp"></forward>
+		<forward name="buscar" path="/impressao/buscaos.jsp"></forward>
 	</action>
 	
 </action-mappings>
