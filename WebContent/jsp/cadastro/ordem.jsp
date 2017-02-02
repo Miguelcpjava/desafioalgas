@@ -13,7 +13,10 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
+    $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy',
+    	 monthNames: [ "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ],
+    	 gotoCurrent: true
+    });
   } );
   </script>
 </head>
