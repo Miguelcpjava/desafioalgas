@@ -64,7 +64,7 @@ public class OSAction {
 	@Test
 	public void verificarCodeOS(){
 		CodeOS code = new CodeOS();
-		String codigoGerado = code.valorCode(code.gerarCodeAleatorio());
+		String codigoGerado = code.codeGear();
 		System.out.println("Codigo Gerado: "+codigoGerado);
 		boolean result = codigoGerado.matches("\\w");
 		Assert.assertTrue(result == true);
